@@ -11,9 +11,13 @@
       url = "https://flakehub.com/f/hercules-ci/flake-parts/0.1.*";
     };
     flake-schemas.url = "https://flakehub.com/f/DeterminateSystems/flake-schemas/0.1.*";
-    nix-unit.url = "github:nix-community/nix-unit";
-    nix-unit.inputs.nixpkgs.follows = "nixpkgs";
-    nix-unit.inputs.flake-parts.follows = "flake-parts";
+    nix-unit = {
+      url = "github:nix-community/nix-unit/?tag=v2.24.1";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
   };
 
   outputs =
