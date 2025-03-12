@@ -18,6 +18,7 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+    treefmt-nix.url = "github:numtide/treefmt-nix/3d0579f5cc93436052d94b73925b48973a104204";
   };
 
   outputs =
@@ -25,6 +26,7 @@
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         inputs.nix-unit.modules.flake.default
+        inputs.treefmt-nix.flakeModule
       ];
       systems = [
         "x86_64-linux"
@@ -36,6 +38,7 @@
         { 
           inputs',
           pkgs,
+          self',
           ...
         }:
         {
@@ -47,6 +50,7 @@
               pkgs.git
               pkgs.gnumake
               pkgs.nixd
+              self'.formatter
             ];
           };
           nix-unit.inputs = {
