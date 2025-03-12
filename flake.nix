@@ -2,9 +2,10 @@
   description = "Description for the project";
 
   inputs = {
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2411.*";
+    fh.url = "https://flakehub.com/f/DeterminateSystems/fh/0.1.*";
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2411.*";
     nix-unit.url = "github:nix-community/nix-unit";
     nix-unit.inputs.nixpkgs.follows = "nixpkgs";
     nix-unit.inputs.flake-parts.follows = "flake-parts";
@@ -24,12 +25,14 @@
       ];
       perSystem =
         { 
+          inputs',
           pkgs,
           ...
         }:
         {
           devShells.default = pkgs.mkShell {
             packages = [
+              inputs'.fh.packages.default
               pkgs.git
               pkgs.gnumake
               pkgs.nixd
