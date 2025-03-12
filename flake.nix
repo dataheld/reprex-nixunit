@@ -3,9 +3,6 @@
 
   inputs = {
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2411.*";
-    fh.url = "https://flakehub.com/f/DeterminateSystems/fh/0.1.*";
-    flake-checker.url = "https://flakehub.com/f/DeterminateSystems/flake-checker/0.2.*";
-    flake-iter.url = "https://flakehub.com/f/DeterminateSystems/flake-iter/0.1.*";
     flake-parts = {
       inputs.nixpkgs-lib.follows = "nixpkgs";
       url = "https://flakehub.com/f/hercules-ci/flake-parts/0.1.*";
@@ -44,9 +41,6 @@
         {
           devShells.default = pkgs.mkShell {
             packages = [
-              inputs'.fh.packages.default
-              inputs'.flake-checker.packages.default
-              inputs'.flake-iter.packages.default
               pkgs.git
               pkgs.gnumake
               pkgs.nixd
