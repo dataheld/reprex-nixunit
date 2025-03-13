@@ -2,10 +2,10 @@
   description = "Description for the project";
 
   inputs = {
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2411.*";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-parts = {
       inputs.nixpkgs-lib.follows = "nixpkgs";
-      url = "https://flakehub.com/f/hercules-ci/flake-parts/0.1.*";
+      url = "github:hercules-ci/flake-parts";
     };
     nix-unit = {
       url = "github:nix-community/nix-unit/?tag=v2.24.1";
