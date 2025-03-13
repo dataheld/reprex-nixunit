@@ -7,7 +7,6 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
       url = "https://flakehub.com/f/hercules-ci/flake-parts/0.1.*";
     };
-    flake-schemas.url = "https://flakehub.com/f/DeterminateSystems/flake-schemas/0.1.*";
     nix-unit = {
       url = "github:nix-community/nix-unit/?tag=v2.24.1";
       inputs = {
@@ -51,29 +50,12 @@
             # NOTE: a `nixpkgs-lib` follows rule is currently required
             inherit (inputs) nixpkgs flake-parts nix-unit;
           };
-          # Tests specified here may refer to system-specific attributes that are
-          # available in the `perSystem` context
           nix-unit.tests = {
-            "test integer equality is reflexive" = {
+            "test example" = {
               expr = "123";
               expected = "123";
             };
-            "frobnicator" = {
-              "testFoo" = {
-                expr = "foo";
-                expected = "foo";
-              };
-            };
           };
         };
-      flake = {
-        schemas = inputs.flake-schemas.schemas;
-        # System-agnostic tests can be defined here, and will be picked up by
-        # `nix flake check`
-        tests.testBar = {
-          expr = "bar";
-          expected = "bar";
-        };
-      };
     };
 }
