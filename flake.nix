@@ -40,9 +40,6 @@
         {
           devShells.default = pkgs.mkShell {
             packages = [
-              pkgs.git
-              pkgs.gnumake
-              pkgs.nixd
               self'.formatter
             ];
           };
