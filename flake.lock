@@ -139,7 +139,6 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "rev": "3d0579f5cc93436052d94b73925b48973a104204",
         "type": "github"
       }
     }
