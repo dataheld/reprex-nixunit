@@ -39,7 +39,7 @@
         {
           nix-unit.inputs = {
             # NOTE: a `nixpkgs-lib` follows rule is currently required
-            inherit (inputs) nixpkgs flake-parts nix-unit treefmt-nix;
+            inherit (inputs) nixpkgs flake-parts nix-unit;
           };
           nix-unit.tests = {
             "test example" = {
