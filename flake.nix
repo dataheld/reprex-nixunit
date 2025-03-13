@@ -32,17 +32,11 @@
       ];
       perSystem =
         { 
-          inputs',
           pkgs,
           self',
           ...
         }:
         {
-          devShells.default = pkgs.mkShell {
-            packages = [
-              self'.formatter
-            ];
-          };
           nix-unit.inputs = {
             # NOTE: a `nixpkgs-lib` follows rule is currently required
             inherit (inputs) nixpkgs flake-parts nix-unit;
