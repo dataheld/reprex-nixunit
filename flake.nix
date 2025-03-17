@@ -7,6 +7,7 @@
       inputs.nixpkgs-lib.follows = "nixpkgs";
       url = "github:hercules-ci/flake-parts";
     };
+    flake-iter.url = "https://flakehub.com/f/DeterminateSystems/flake-iter/0.1.*";
     nix-unit = {
       url = "github:nix-community/nix-unit/?tag=v2.24.1";
       inputs = {
@@ -33,10 +34,16 @@
       perSystem =
         { 
           pkgs,
+          inputs',
           self',
           ...
         }:
         {
+          devShells.default = pkgs.mkShell {
+            packages = [
+              inputs'.flake-iter.packages.default
+            ];
+          };
           nix-unit = {
             inputs = {
               # NOTE: a `nixpkgs-lib` follows rule is currently required
