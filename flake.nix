@@ -37,14 +37,16 @@
           ...
         }:
         {
-          nix-unit.inputs = {
-            # NOTE: a `nixpkgs-lib` follows rule is currently required
-            inherit (inputs) nixpkgs flake-parts nix-unit;
-          };
-          nix-unit.tests = {
-            "test example" = {
-              expr = "123";
-              expected = "123";
+          nix-unit = {
+            inputs = {
+              # NOTE: a `nixpkgs-lib` follows rule is currently required
+              inherit (inputs) nixpkgs flake-parts nix-unit;
+            };
+            tests = {
+              "test example" = {
+                expr = "123";
+                expected = "123";
+              };
             };
           };
         };
